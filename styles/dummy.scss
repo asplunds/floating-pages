@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300&family=Libre+Franklin:wght@100&display=swap");
+
+body,
+html {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    font-family: "Libre Franklin", sans-serif;
+    scroll-behavior: smooth;
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: "Fira Sans", sans-serif;
+}
+.dummy-header {
+    height: 70vh;
+    background: #b5e5cf;
+    display: grid;
+    place-items: center;
+    & > div {
+        font-size: 2em;
+        padding: 10px;
+        box-sizing: border-box;
+        text-align: center;
+    }
+}
+
+.direction-picker {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+
+    place-items: center;
+    button {
+        cursor: pointer;
+        display: block;
+        width: 70px;
+        height: 70px;
+        font-size: 0.8em;
+        border-radius: 15px;
+        padding: 0;
+        margin: 0;
+        background: #3f83f8;
+        border: 4px solid #b5e5cf;
+        color: white;
+        transition: all 0.1s ease;
+        &.active {
+            border: 4px solid white;
+        }
+        &:active {
+            opacity: 0.7;
+        }
+        &:focus {
+            outline: none;
+            border: 4px solid #6abe9a;
+        }
+    }
+}
+
+.pages {
+    counter-reset: section;
+    .page {
+        display: grid;
+        place-items: center;
+        font-size: clamp(1.3rem, 5vw, 3rem);
+    }
+    h1::after {
+        counter-increment: section;
+        content: "Page " counter(section);
+    }
+}

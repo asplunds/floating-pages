@@ -1,0 +1,55 @@
+body,
+html {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+.pages {
+    display: none;
+    position: relative;
+    background: green;
+    &.active {
+        display: block;
+    }
+
+    .page, .placeholder {
+        height: 100vh;
+        width: 100%;
+    }
+    .page {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: red;
+        will-change: transform;
+        transform: translateY(calc(100% * (var(--page) - var(--index))))/*  scale(calc(((var(--page) - var(--index))) * -.2 + 1)) */;
+    }
+    &[p-down] .page, &[p-right] .page, &[p-left] .page, &[p-up] .page {
+        transition: transform .33s ease-in-out;
+    }
+    &[p-right] .page {
+        transform: translateX(calc(100% * (var(--page) - var(--index))));
+    }
+    &[p-left] .page {
+        transform: translateX(calc(-100% * (var(--page) - var(--index))));
+    }
+    &[p-up] .page {
+        transform: translateY(calc(-100% * (var(--page) - var(--index))));
+    }
+    .page-wrapper {
+        overflow: hidden;
+        position: sticky;
+        height: 100vh;
+        width: 100%;
+        top: 0;
+    }
+    @for $i from 1 to 10 {
+        .page:nth-child(#{$i}) {
+            background: adjust-hue(lightcoral, 15deg * ($i - 1));
+            z-index: 11 - $i;
+        }
+    }
+    .placeholder {
+        background: yellow;
+    }
+}
