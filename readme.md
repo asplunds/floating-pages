@@ -2,7 +2,8 @@
 Hold your pages in place while scrolling, when the next page is up, transition to it. This simple example will always hold one page in the center of the viewport, like a powerpoint presentation.
 
 Credit me if you fork/use it.
-
+## Demo
+[Right here](https://asplunds.github.io/floating-pages/dist/)
 ## Api
 valid directions (as attribute):
 
